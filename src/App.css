@@ -1,38 +1,70 @@
-.App {
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
+
+* {
+	font-family: "Open Sans", sans-serif;
+	color: navy;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.app {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.nicknamePrompt {
+	transition: translateY 0.3s;
+	margin-top: 40px;
+	text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.nicknamePrompt input[type="text"]:focus,
+.nicknamePrompt input[type="text"]:focus {
+	outline: none;
 }
 
-.App-link {
-  color: #61dafb;
+.nicknamePrompt input[type="text"] {
+	padding: 10px 15px;
+	border: 1px solid navy;
+	color: navy;
+	border-right: none;
+	border-radius: 4px 0 0 4px;
+	width: 250px;
+	max-width: 55%;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.nicknamePrompt input[type="submit"] {
+	padding: 10px 15px;
+	border: 1px solid navy;
+	background-color: navy;
+	color: white;
+	border-radius: 0 4px 4px 0;
+}
+
+.hidden {
+	display: none;
+}
+
+.warning {
+	display: block;
+	color: red;
+	text-align: center;
+	margin-top: 8px;
+	font-size: 12px;
+}
+.pokemon-thumbnail {
+	width: 150px;
+}
+
+.pokemon-card {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	margin-bottom: 40px;
+	border: 1px solid navy;
+	border-radius: 5px;
+	padding: 10px 20px;
+}
+
+.pokemon-card h2 {
+	margin: 5px;
 }
