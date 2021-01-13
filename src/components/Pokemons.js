@@ -18,7 +18,6 @@ const Pokemons = ({ nickname }) => {
 							pokemon.name = data.name
 							pokemon.artwork =
 								data.sprites.other["official-artwork"].front_default
-
 							pokemon.stats = []
 							data.stats.forEach(item => {
 								pokemon.stats.push({
@@ -30,14 +29,28 @@ const Pokemons = ({ nickname }) => {
 						})
 				})
 			})
-	}, [])
+	}, [nickname.length])
+
+	const handleClick = () => {
+		const caughtPokemons = []
+		allPokemons.forEach(pokemon => {
+			const randomNumber = Math.floor(Math.random() * 2)
+			if (randomNumber === 1) caughtPokemons.push(pokemon.name)
+		})
+		console.log({ nickname: nickname, pokemons: caughtPokemons })
+	}
 
 	return (
-		<div>
-			{allPokemons.map(pokemon => (
-				<PokemonCard key={pokemon.name} pokemon={pokemon} />
-			))}
-		</div>
+		<>
+			<div className="pokemons-container">
+				{allPokemons.map(pokemon => (
+					<PokemonCard key={pokemon.name} pokemon={pokemon} />
+				))}
+			</div>
+			<button className="catch-button" onClick={handleClick}>
+				Catch'em!
+			</button>
+		</>
 	)
 }
 

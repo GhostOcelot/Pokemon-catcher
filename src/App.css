@@ -1,43 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap");
 
+:root {
+	--blue: #3b5ca8;
+	--yellow1: #ffcb05;
+	--yellow2: #ffe600;
+	--red: #ff0505;
+}
+
 * {
 	font-family: "Open Sans", sans-serif;
-	color: navy;
+	color: var(--blue);
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
 }
 
 .app {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	min-height: 100vh;
+}
+
+.pokemon-logo {
+	width: 80%;
+	max-width: 600px;
+	margin-top: 30px;
+}
+
+.greetings {
+	margin-top: 20px;
 }
 
 .nicknamePrompt {
 	transition: translateY 0.3s;
 	margin-top: 40px;
 	text-align: center;
+	width: 100%;
+	max-width: 500px;
+}
+
+.nicknamePrompt form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .nicknamePrompt input[type="text"]:focus,
-.nicknamePrompt input[type="text"]:focus {
+.nicknamePrompt input[type="text"]:focus,
+.catch-button:focus {
 	outline: none;
 }
 
 .nicknamePrompt input[type="text"] {
 	padding: 10px 15px;
-	border: 1px solid navy;
-	color: navy;
-	border-right: none;
-	border-radius: 4px 0 0 4px;
-	width: 250px;
-	max-width: 55%;
-}
-
-.nicknamePrompt input[type="submit"] {
-	padding: 10px 15px;
-	border: 1px solid navy;
-	background-color: navy;
-	color: white;
-	border-radius: 0 4px 4px 0;
+	border: 5px solid var(--blue);
+	background: linear-gradient(var(--yellow1), var(--yellow2));
+	color: var(--blue);
+	border-radius: 30px;
+	width: 65%;
+	margin: 100px 0 20px 0;
+	text-align: center;
+	font-size: 16px;
+	/* text-transform: uppercase; */
+	font-weight: bold;
 }
 
 .hidden {
@@ -46,13 +72,25 @@
 
 .warning {
 	display: block;
-	color: red;
+	color: var(--red);
 	text-align: center;
 	margin-top: 8px;
 	font-size: 12px;
 }
 .pokemon-thumbnail {
 	width: 150px;
+	transition: transform 0.8s;
+	transform: scale(0.9, 0.9);
+}
+
+.pokemon-thumbnail:hover {
+	transform: scale(1.2, 1.2);
+}
+
+.pokemons-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
 }
 
 .pokemon-card {
@@ -60,11 +98,31 @@
 	align-items: center;
 	flex-direction: column;
 	margin-bottom: 40px;
-	border: 1px solid navy;
 	border-radius: 5px;
-	padding: 10px 20px;
+	padding: 15px 30px;
+	margin: 20px 0;
 }
 
-.pokemon-card h2 {
-	margin: 5px;
+.pokemon-name {
+	margin: 10px 0 0 0;
+}
+
+.pokemon-circle {
+	background: linear-gradient(var(--yellow1), var(--yellow2));
+	border-radius: 50%;
+	border: 5px solid var(--blue);
+}
+
+.catch-button,
+.nicknamePrompt input[type="submit"] {
+	background-color: var(--blue);
+	color: #fff;
+	border: none;
+	border-radius: 30px;
+	padding: 10px 20px;
+	margin: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
 }

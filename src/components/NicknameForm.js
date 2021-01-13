@@ -1,9 +1,12 @@
 import { useState } from "react"
 
-const NicknameForm = ({ setNickname }) => {
+const NicknameForm = ({ nickname, setNickname }) => {
+	const [tempNick, setTempNick] = useState("")
+	const [formValidation, setFormValidation] = useState(true)
+
 	const handleChange = e => {
 		setTempNick(e.target.value)
-		e.target.value.length < 5
+		e.target.value.trim().length < 5
 			? setFormValidation(false)
 			: setFormValidation(true)
 	}
@@ -13,30 +16,27 @@ const NicknameForm = ({ setNickname }) => {
 		if (formValidation) {
 			setNickname(tempNick)
 			setTempNick("")
-			setHidden(!hidden)
 		}
 	}
 
-	const [hidden, setHidden] = useState(false)
-	const [tempNick, setTempNick] = useState("")
-	const [formValidation, setFormValidation] = useState(true)
-
-	return (
-		<div className={hidden ? " hidden" : null}>
-			<form className="nicknamePrompt" onSubmit={handleSubmit}>
-				<input
-					type="text"
-					placeholder="enter you nickname"
-					onChange={handleChange}
-					value={tempNick}
-				/>
-				<input type="submit" value="Continue" />
-			</form>
-			<p className={formValidation ? "hidden" : "warning"}>
-				Your name should be at least 5 characters long
-			</p>
-		</div>
-	)
+	if (!nickname) {
+		return (
+			<div className="nicknamePrompt">
+				<form onSubmit={handleSubmit}>
+					<input
+						type="text"
+						placeholder="enter you nickname"
+						onChange={handleChange}
+						value={tempNick}
+					/>
+					<input type="submit" value="Continue" />
+				</form>
+				<p className={formValidation ? "hidden" : "warning"}>
+					Your name should be at least 5 characters long
+				</p>
+			</div>
+		)
+	} else return null
 }
 
 export default NicknameForm
