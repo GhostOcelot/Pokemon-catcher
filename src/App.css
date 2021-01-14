@@ -4,7 +4,7 @@
 	--blue: #3b5ca8;
 	--yellow1: #ffcb05;
 	--yellow2: #ffe600;
-	--red: #ff0505;
+	--red: #ff0000;
 }
 
 * {
@@ -20,6 +20,7 @@
 	align-items: center;
 	flex-direction: column;
 	min-height: 100vh;
+	position: relative;
 }
 
 .pokemon-logo {
@@ -32,7 +33,9 @@
 	margin-top: 20px;
 }
 
-.nicknamePrompt {
+.nickname-container {
+	position: absolute;
+	top: 180px;
 	transition: translateY 0.3s;
 	margin-top: 40px;
 	text-align: center;
@@ -40,19 +43,13 @@
 	max-width: 500px;
 }
 
-.nicknamePrompt form {
+.nickname-form {
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 }
 
-.nicknamePrompt input[type="text"]:focus,
-.nicknamePrompt input[type="text"]:focus,
-.catch-button:focus {
-	outline: none;
-}
-
-.nicknamePrompt input[type="text"] {
+.nickname-input {
 	padding: 10px 15px;
 	border: 5px solid var(--blue);
 	background: linear-gradient(var(--yellow1), var(--yellow2));
@@ -62,8 +59,27 @@
 	margin: 100px 0 20px 0;
 	text-align: center;
 	font-size: 16px;
-	/* text-transform: uppercase; */
 	font-weight: bold;
+}
+
+.catch-button,
+.nickname-button {
+	background-color: var(--blue);
+	color: #fff;
+	border: none;
+	border-radius: 30px;
+	padding: 10px 20px;
+	margin: 20px;
+	font-size: 16px;
+	font-weight: bold;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.nickname-input:focus,
+.nickname-button:focus,
+.catch-button:focus {
+	outline: none;
 }
 
 .hidden {
@@ -76,15 +92,7 @@
 	text-align: center;
 	margin-top: 8px;
 	font-size: 12px;
-}
-.pokemon-thumbnail {
-	width: 150px;
-	transition: transform 0.8s;
-	transform: scale(0.9, 0.9);
-}
-
-.pokemon-thumbnail:hover {
-	transform: scale(1.2, 1.2);
+	font-weight: bold;
 }
 
 .pokemons-container {
@@ -108,21 +116,44 @@
 }
 
 .pokemon-circle {
+	position: relative;
 	background: linear-gradient(var(--yellow1), var(--yellow2));
 	border-radius: 50%;
 	border: 5px solid var(--blue);
+	width: 150px;
+	height: 150px;
+	animation: grow 1s;
 }
 
-.catch-button,
-.nicknamePrompt input[type="submit"] {
-	background-color: var(--blue);
-	color: #fff;
-	border: none;
-	border-radius: 30px;
-	padding: 10px 20px;
-	margin: 20px;
-	font-size: 16px;
-	font-weight: bold;
-	text-transform: uppercase;
-	cursor: pointer;
+.pokemon-thumbnail {
+	position: absolute;
+	width: 150px;
+	transition: transform 0.8s;
+	transform: scale(0.9, 0.9);
+	animation: appear 1.5s;
+}
+
+.pokemon-thumbnail:hover {
+	transform: scale(1.2, 1.2);
+}
+
+@keyframes grow {
+	0% {
+		transform: scale(0);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+@keyframes appear {
+	0% {
+		opacity: 0;
+	}
+	60% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
 }

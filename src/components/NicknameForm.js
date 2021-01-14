@@ -16,20 +16,22 @@ const NicknameForm = ({ nickname, setNickname }) => {
 		if (formValidation) {
 			setNickname(tempNick)
 			setTempNick("")
+			setFormValidation(false)
 		}
 	}
 
 	if (!nickname) {
 		return (
-			<div className="nicknamePrompt">
-				<form onSubmit={handleSubmit}>
+			<div className="nickname-container">
+				<form onSubmit={handleSubmit} className="nickname-form">
 					<input
+						className="nickname-input"
 						type="text"
 						placeholder="enter you nickname"
 						onChange={handleChange}
 						value={tempNick}
 					/>
-					<input type="submit" value="Continue" />
+					<input className="nickname-button" type="submit" value="Continue" />
 				</form>
 				<p className={formValidation ? "hidden" : "warning"}>
 					Your name should be at least 5 characters long
