@@ -15,12 +15,20 @@
 	box-sizing: border-box;
 }
 
+body {
+	background: url("./assets/pokemon_wallpaper.jpg");
+	background-attachment: fixed;
+	background-repeat: no-repeat;
+	background-size: cover;
+}
+
 .app {
 	display: flex;
 	align-items: center;
 	flex-direction: column;
 	min-height: 100vh;
 	position: relative;
+	scrollbar-width: thin;
 }
 
 .pokemon-logo {
